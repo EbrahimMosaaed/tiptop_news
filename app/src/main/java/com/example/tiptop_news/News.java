@@ -6,13 +6,17 @@ public class News {
     private final String mNewsDate;
     private String mNewsPillar;
     private final String mUrl;
+    private final String mAuthor;
 
-    public News(String category, String content, String time, String author, String url) {
+    public News(String category, String content, String time, String pillar, String url, String author) {
         mNewsTopic = category;
         mNewsContent = content;
         mNewsDate = time;
-        mNewsPillar = author;
+        mNewsPillar = pillar;
         mUrl = url;
+        mAuthor = author;
+
+
     }
 
     public String getNewsTopic() {
@@ -33,5 +37,9 @@ public class News {
 
     public String getUrl() {
         return mUrl;
+    }
+
+    public String getAuthor() {
+        return mAuthor;
     }
 }

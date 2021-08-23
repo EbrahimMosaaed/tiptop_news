@@ -102,17 +102,28 @@ public class QueryUtils extends Activity {
             return null;
         }
         List<News> news = new ArrayList<News>();
+        String author = "";
         try {
             JSONObject myJsonObject = new JSONObject(articleJSON);
             JSONObject myResponseObj = myJsonObject.getJSONObject("response");
-            JSONArray newsInfoArray = myResponseObj.getJSONArray(("results"));
+            JSONArray newsResultsArray = myResponseObj.getJSONArray(("results"));
 
-            for (int i = 0; i < newsInfoArray.length(); i++) {
-                News myNews = new News(newsInfoArray.getJSONObject(i).getString("sectionName"),
-                        newsInfoArray.getJSONObject(i).getString("webTitle"),
-                        formatDate(newsInfoArray.getJSONObject(i).getString("webPublicationDate")),
-                        newsInfoArray.getJSONObject(i).has("pillarName") ? newsInfoArray.getJSONObject(i).getString("pillarName") : "",
-                        newsInfoArray.getJSONObject(i).getString("webUrl"));
+            for (int i = 0; i < newsResultsArray.length(); i++) {
+
+                JSONArray tagsArray = newsResultsArray.getJSONObject(i).getJSONArray("tags");
+                if (tagsArray.length() > 0) {
+                    if (tagsArray.getJSONObject(0).has("firstName") && tagsArray.getJSONObject(0).has("lastName")) {
+                        author = tagsArray.getJSONObject(0).getString("firstName");
+                        author += "-";
+                        author += tagsArray.getJSONObject(0).getString("lastName");
+                    }
+
+                }
+                News myNews = new News(newsResultsArray.getJSONObject(i).getString("sectionName"),
+                        newsResultsArray.getJSONObject(i).getString("webTitle"),
+                        formatDate(newsResultsArray.getJSONObject(i).getString("webPublicationDate")),
+                        newsResultsArray.getJSONObject(i).has("pillarName") ? newsResultsArray.getJSONObject(i).getString("pillarName") : "",
+                        newsResultsArray.getJSONObject(i).getString("webUrl"), author);
                 news.add(myNews);
             }
         } catch (JSONException e) {

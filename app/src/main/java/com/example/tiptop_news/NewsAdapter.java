@@ -24,9 +24,11 @@ public class NewsAdapter extends ArrayAdapter<News> {
                     R.layout.news_list_item, parent, false);
         }
         News currentNews = getItem(position);
-
         TextView newsContents = (TextView) listItemView.findViewById(R.id.news_content);
         newsContents.setText(currentNews.getNewsContent());
+
+        TextView newsAuthor = (TextView) listItemView.findViewById(R.id.news_author);
+        newsAuthor.setText(currentNews.getAuthor());
 
         TextView newsTopic = (TextView) listItemView.findViewById(R.id.news_topic);
         newsTopic.setText(currentNews.getNewsTopic());
@@ -41,7 +43,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         TextView newsDate = listItemView.findViewById(R.id.news_date);
         newsDate.setText(currentNews.getNewsDate());
-
         return listItemView;
     }
 }
