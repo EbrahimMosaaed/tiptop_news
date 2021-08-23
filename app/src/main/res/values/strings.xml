@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Tiptop</string>
+    //
+    <string name="news_not_found">No news news were found.</string>
+    <string name="no_internet_connection">Please check your internet connection.</string>
+    //
+    <string name="settings_menu">Settings</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_order">Order By</string>
+    <string name="settings_order_key" translatable="false">order_by</string>
+    <string name="default_order" translatable="false">@string/settings_relative_value</string>
+    <string name="settings_relative">Relative</string>
+    <string name="settings_relative_value" translatable="false">relevance</string>
+    <string name="settings_newest">Newest</string>
+    <string name="settings_newest_value" translatable="false">newest</string>
+    //
+    <string name="settings_max">Maximum</string>
+    <string name="settings_max_key">max news</string>
+    <string name="default_articles">10</string>
+</resources>
