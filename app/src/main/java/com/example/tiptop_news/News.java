@@ -4,7 +4,7 @@ public class News {
     private final String mNewsTopic;
     private final String mNewsContent;
     private final String mNewsDate;
-    private String mNewsPillar;
+    private final String mNewsPillar;
     private final String mUrl;
     private final String mAuthor;
 
